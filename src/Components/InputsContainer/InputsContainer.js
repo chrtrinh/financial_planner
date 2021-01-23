@@ -5,28 +5,15 @@ import React, { useEffect, useState } from "react";
 import CostBreakdownContainer from "../CostBreakdownContainer/CostBreakdownContainer";
 
 function InputsContainer() {
-	const [inputSlice, setInputSlice] = useState({
-		test: "100",
-		test2: "20",
-	});
-	const [loaded, setLoaded] = useState(false);
+	const [chart, setChart] = useState({});
 	const [income, setIncome] = useState(0.0);
 	const [incomeValue, setIncomeValue] = useState("");
 	const [valueError, setValueError] = useState(false);
 	const [percentage, setPercentage] = useState(100);
-
-	useEffect(() => {
-		setLoaded(true);
-	}, []);
-
-	const updateSlice = (sliceName, value) => {
-		let temporarySlice = inputSlice;
-		inputSlice[sliceName] = value;
-		setInputSlice(temporarySlice);
-	};
+	const [updated, setUpdated] = useState(false);
 
 	const checkIfSliceExists = (sliceName) => {
-		return inputSlice.hasOwnProperty(sliceName);
+		return chart.hasOwnProperty(sliceName);
 	};
 
 	const validateIncomeValueBeforeUpdate = (incomeValue) => {
@@ -36,6 +23,26 @@ function InputsContainer() {
 		}
 		setValueError(false);
 		setIncome(incomeValue);
+	};
+
+	const addSlice = (sliceName, value) => {
+		let temporaryChart = chart;
+		temporaryChart[sliceName] = value;
+		console.log(temporaryChart);
+		setChart(temporaryChart);
+		setUpdated(!updated);
+	};
+
+	const deleteSlice = (sliceName) => {
+		let filtered = Object.keys(chart)
+			.filter((slice) => {
+				return slice !== sliceName;
+			})
+			.reduce((obj, key) => {
+				obj[key] = chart[key];
+				return obj;
+			}, {});
+		setChart(filtered);
 	};
 
 	return (
@@ -70,9 +77,10 @@ function InputsContainer() {
 			<div className="inputsContainer__bottom">
 				<CostBreakdownContainer
 					percentage={percentage}
-					updateSlice={updateSlice}
+					addSlice={addSlice}
 					checkIfSliceExists={checkIfSliceExists}
-					inputSlice={inputSlice}
+					chart={chart}
+					deleteSlice={deleteSlice}
 				/>
 			</div>
 		</div>

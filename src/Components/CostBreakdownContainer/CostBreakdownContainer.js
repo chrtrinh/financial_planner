@@ -1,14 +1,29 @@
 import "./CostBreakdownContainer.css";
 import Card from "@material-ui/core/Card";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 
 function CostBreakdownContainer({
-	percentage,
-	updateSlice,
+	addSlice,
 	checkIfSliceExists,
-	inputSlice,
+	chart,
+	deleteSlice,
+	percentage,
 }) {
+	const [category, setCategory] = useState("");
+	const [percent, setPercent] = useState("");
+
+	const handleDeleteSlice = (e) => {
+		deleteSlice(e.target.value);
+	};
+
+	const handleSubmit = () => {
+		if (checkIfSliceExists(category)) {
+			return;
+		}
+		addSlice(category, percent);
+	};
+
 	return (
 		<div className="costBreakdownContainer">
 			<Card>
@@ -19,16 +34,26 @@ function CostBreakdownContainer({
 								<label>Category: </label>
 								<input
 									type="text"
-									placeholder="Please enter a percentage"
+									placeholder="Please enter a category"
+									value={category}
+									onChange={(e) =>
+										setCategory(e.target.value)
+									}
 								/>
 								<label>Percentage: </label>
 								<input
 									type="text"
 									placeholder="Please enter a percentage"
+									value={percent}
+									onChange={(e) => setPercent(e.target.value)}
 								/>
 							</div>
 							<div className="costBreakdownContainer__header__inputs__right">
-								<Button variant="contained" color="primary">
+								<Button
+									variant="contained"
+									color="primary"
+									onClick={handleSubmit}
+								>
 									Submit
 								</Button>
 							</div>
@@ -40,14 +65,36 @@ function CostBreakdownContainer({
 					</div>
 				</div>
 				<div className="costBreakdownContainer__body">
-					{Object.keys(inputSlice).map((slice) => {
+					{Object.keys(chart).map((slice) => {
 						return (
 							<div
 								className="costBreakdownContainer__record"
 								key={slice}
 							>
-								<h4>{slice}</h4>
-								<h4>{inputSlice[slice]}</h4>
+								<div className="costBreakdownContainer__record__left">
+									<div className="costBreakdownContainer__record__category">
+										<h4>Category: {slice}</h4>
+									</div>
+									<div className="costBreakdownContainer__record__percentage">
+										<h4>
+											Percentage Allocated: {chart[slice]}
+											%
+										</h4>
+									</div>
+								</div>
+
+								<div className="costBreakdownContainer__record__right">
+									<button>Edit</button>
+
+									<button
+										onClick={(e, slice) => {
+											handleDeleteSlice(e, slice);
+										}}
+										value={slice}
+									>
+										Delete
+									</button>
+								</div>
 							</div>
 						);
 					})}
