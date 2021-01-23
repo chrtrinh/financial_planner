@@ -1,0 +1,77 @@
+.costBreakdownContainer {
+	display: flex;
+	width: 100%;
+}
+
+.costBreakdownContainer > .MuiCard-root {
+	border: 1px solid #000;
+	margin: 10px;
+	padding: 10px;
+	width: 100%;
+}
+
+.costBreakdownContainer__header {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid gray;
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+.costBreakdownContainer__header__inputs {
+	display: flex;
+	flex: 0.8;
+}
+
+.costBreakdownContainer__header__inputs__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.costBreakdownContainer__header__inputs__left > label {
+	font-size: 12px;
+	margin-right: 10px;
+}
+
+.costBreakdownContainer__header__inputs__left > input {
+	height: 50%;
+	flex: 1;
+	margin-right: 10px;
+}
+
+.costBreakdownContainer__header__inputs__left {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 0.8;
+}
+
+.costBreakdownContainer__header__inputs__right {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.costBreakdownContainer__header__inputs__right > .MuiButton-root {
+	height: 20px;
+	margin-left: 10px;
+}
+
+.costBreakdownContainer__body {
+	width: 100%;
+}
+
+.constBreakdownContainer__usage {
+	display: flex;
+	justify-content: center;
+	width: 80%;
+	margin-left: 10px;
+}
+
+.costBreakdownContainer__record {
+	border: 1px solid #000;
+	display: flex;
+}

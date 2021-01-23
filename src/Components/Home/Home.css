@@ -1,2 +1,14 @@
 .home {
+	display: flex;
+	height: 100vh;
+}
+
+.home__left {
+	border: 1px solid #000;
+	flex: 0.5;
+}
+
+.home__right {
+	border: 1px solid #000;
+	flex: 0.5;
 }
