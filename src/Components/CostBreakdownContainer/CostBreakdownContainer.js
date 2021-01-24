@@ -13,15 +13,13 @@ function CostBreakdownContainer({
 	const [category, setCategory] = useState("");
 	const [percent, setPercent] = useState("");
 
-	const handleDeleteSlice = (e) => {
-		deleteSlice(e.target.value);
-	};
-
 	const handleSubmit = () => {
 		if (checkIfSliceExists(category)) {
 			return;
 		}
 		addSlice(category, percent);
+		setCategory("");
+		setPercent("");
 	};
 
 	return (
@@ -88,7 +86,7 @@ function CostBreakdownContainer({
 
 									<button
 										onClick={(e, slice) => {
-											handleDeleteSlice(e, slice);
+											deleteSlice(e.target.value);
 										}}
 										value={slice}
 									>

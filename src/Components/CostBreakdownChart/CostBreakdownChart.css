@@ -1,0 +1,50 @@
+.costBreakdownChart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.costBreakdownChart__data {
+	border: 1px solid #000;
+	width: 100%;
+}
+
+.costBreakdownChart__label {
+	display: flex;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.costBreakdownChart__label__left {
+	flex: 0.5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.costBreakdownChart__label__right {
+	flex: 0.5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.costBreakdownChart__data__records {
+	display: flex;
+	border: 1px solid gray;
+}
+
+.costBreakdownChart__data__left {
+	flex: 0.5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.costBreakdownChart__data__right {
+	flex: 0.5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

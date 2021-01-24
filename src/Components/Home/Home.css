@@ -5,10 +5,5 @@
 
 .home__left {
 	border: 1px solid #000;
-	flex: 0.5;
-}
-
-.home__right {
-	border: 1px solid #000;
-	flex: 0.5;
+	flex: 1;
 }

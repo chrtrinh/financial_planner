@@ -1,6 +1,14 @@
 .inputsContainer {
 	display: flex;
-	flex-direction: column;
+	height: 100%;
+}
+
+.inputsContainer__left {
+	flex: 0.5;
+}
+
+.inputsContainer__right {
+	flex: 0.5;
 }
 
 .inputsContainer__top {
@@ -48,4 +56,24 @@
 	width: 100%;
 	margin: 10px;
 	border: 1px solid #000;
+}
+
+.inputsContainer__chartBuilder {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.inputsContainer__chartBuilder > button {
+	margin-top: 25px;
+	margin-bottom: 20px;
+}
+
+.inputsContainer__chartBuilder > .MuiCard-root {
+	border: 1px solid #000;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 95%;
+	margin-bottom: 10px;
 }

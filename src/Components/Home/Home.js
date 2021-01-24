@@ -8,7 +8,6 @@ function Home() {
 			<div className="home__left">
 				<InputsContainer />
 			</div>
-			<div className="home__right"></div>
 		</div>
 	);
 }
