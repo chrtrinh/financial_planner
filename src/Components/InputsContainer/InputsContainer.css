@@ -40,6 +40,7 @@
 
 .inputsContainer__top__body > .MuiCard-root > label {
 	margin-right: 10px;
+	font-weight: 600;
 }
 
 .inputsContainer__top__body > .MuiCard-root > .MuiButton-root {

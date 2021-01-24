@@ -1,7 +1,7 @@
 import "./InputsContainer.css";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CostBreakdownContainer from "../CostBreakdownContainer/CostBreakdownContainer";
 import SimplePieChart from "../SimplePieChart/SimplePieChart";
 import CostBreakdownChart from "../CostBreakdownChart/CostBreakdownChart";
@@ -32,6 +32,10 @@ function InputsContainer() {
 	const [valueError, setValueError] = useState(false);
 	const [visualizationEnable, setVisualizationEnable] = useState(false);
 
+	useEffect(() => {
+		compileChart();
+	}, [chartValues]);
+
 	const checkIfSliceExists = (sliceName) => {
 		return chart.hasOwnProperty(sliceName);
 	};
@@ -40,9 +44,18 @@ function InputsContainer() {
 		if (isNaN(incomeValue) || incomeValue.length === 0) {
 			setValueError(true);
 			return;
+		} else {
+			setValueError(false);
+			let temporaryChartValue = { ...chartValues };
+			Object.keys(chartValues).forEach((key) => {
+				temporaryChartValue[key] = parseInt(
+					incomeValue * (chart[key] / 100),
+					10
+				);
+			});
+			setIncome(incomeValue);
+			setChartValues(temporaryChartValue);
 		}
-		setValueError(false);
-		setIncome(incomeValue);
 	};
 
 	const addSlice = (sliceName, value) => {
@@ -158,7 +171,13 @@ function InputsContainer() {
 			</div>
 			<div className="inputsContainer__right">
 				<div className="inputsContainer__chartBuilder">
-					<button onClick={compileChart}>Visualize</button>
+					<Button
+						onClick={compileChart}
+						variant="contained"
+						color="primary"
+					>
+						Visualize
+					</Button>
 					{visualizationEnable ? (
 						<>
 							<Card>

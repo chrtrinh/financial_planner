@@ -82,8 +82,6 @@ function CostBreakdownContainer({
 								</div>
 
 								<div className="costBreakdownContainer__record__right">
-									<button>Edit</button>
-
 									<button
 										onClick={(e, slice) => {
 											deleteSlice(e.target.value);

@@ -31,7 +31,8 @@
 }
 
 .costBreakdownContainer__header__inputs__left > label {
-	font-size: 12px;
+	font-size: 16px;
+	font-weight: 600;
 	margin-right: 10px;
 }
 
@@ -93,6 +94,7 @@
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
 	padding-left: 10px;
+
 	flex: 0.5;
 }
 
@@ -117,7 +119,7 @@
 	margin-right: 5px;
 }
 
-.costBreakdownContainer__record__right > button:nth-child(2) {
+.costBreakdownContainer__record__right > button:nth-child(1) {
 	background-color: red;
 	color: white;
 	cursor: pointer;
